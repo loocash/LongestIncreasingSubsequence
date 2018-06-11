@@ -3,9 +3,9 @@ Longest Increasing Subsequence
 """
 
 
-def longest_increasing_subsequence(xs: list):
-    longest = [1 for _ in range(len(xs)+1)]
-    longest[-1] = 0
+def lis_naive(xs: list):
+    """ O(n^2) """
+    longest = [0] * (len(xs)+1)
 
     for i, x in enumerate(xs):
         less_than_x = filter(lambda k: xs[k] < x, range(i))

@@ -1,5 +1,5 @@
 import unittest
-from lis import longest_increasing_subsequence
+from lis import lis_naive
 from collections import namedtuple
 
 Test = namedtuple('Test', 'xs, want')
@@ -17,7 +17,7 @@ tests = [
 class TestLongestIncreasingSubsequence(unittest.TestCase):
     def test_longest_increasing_subsequence(self):
         for test in tests:
-            got = longest_increasing_subsequence(test.xs)
+            got = lis_naive(test.xs)
             self.assertEqual(test.want, got, test)
 
 
