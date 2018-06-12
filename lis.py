@@ -2,7 +2,6 @@
 Longest Increasing Subsequence
 """
 
-import math
 from bisect import bisect_right
 
 
@@ -20,11 +19,12 @@ def lis_naive(xs: list):
 
 def lis(xs: list):
     """ O(n lg n) """
-    smallest = [math.inf] * (len(xs)+1)
+    sentinel = max(xs, default=0)+1
+    smallest = [sentinel] * (len(xs)+1)
     for x in xs:
         j = bisect_right(smallest, x)
         if j > 0 and smallest[j-1] == x:
             continue
         smallest[j] = x
 
-    return smallest.index(math.inf)
+    return smallest.index(sentinel)
