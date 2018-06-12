@@ -1,5 +1,5 @@
 import unittest
-from lis import lis_naive
+from lis import lis_naive, lis
 from collections import namedtuple
 
 Test = namedtuple('Test', 'xs, want')
@@ -13,12 +13,18 @@ tests = [
     Test([1, 1, 1], 1),
 ]
 
+algorithms = [
+    lis_naive,
+    lis,
+]
+
 
 class TestLongestIncreasingSubsequence(unittest.TestCase):
     def test_longest_increasing_subsequence(self):
-        for test in tests:
-            got = lis_naive(test.xs)
-            self.assertEqual(test.want, got, test)
+        for fn in algorithms:
+            for test in tests:
+                got = fn(test.xs)
+                self.assertEqual(test.want, got, f"{fn.__name__} {test}")
 
 
 if __name__ == '__main__':
