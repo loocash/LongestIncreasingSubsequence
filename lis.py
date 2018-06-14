@@ -1,5 +1,10 @@
-"""
-Longest Increasing Subsequence
+r"""
+An implementation of two algorithms computing
+the ``Longest Increasing Subsequence```
+of a given sequence of comparable items
+
+>>> print(lis([2, 1, 3, 5, 4]))
+3
 """
 
 from bisect import bisect_right
